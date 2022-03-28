@@ -21,9 +21,11 @@ io.on("connection", (socket) => {
     console.log(`User Connects: ${socket.id}`);
 
     socket.on("send_message", (data) => {
-                console.log(data);
-    })
-})
+                //console.log(data);
+                socket.broadcast.emit("receive_message", data);
+
+    });
+});
 
 
 server.listen(3001, () => {
